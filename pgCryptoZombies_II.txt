@@ -1,0 +1,44 @@
+<template>
+  <v-container>
+    <!-- MetaMask Section -->
+    <v-card class="pa-4 mb-4" outlined>
+      <v-card-title class="text-center">
+        <v-icon large>mdi-ethereum</v-icon>
+        MetaMask (web3JS)
+      </v-card-title>
+      <v-card-text>
+        <v-text-field v-model="walletAddress" label="Wallet Address" disabled></v-text-field>
+        <v-row>
+          <v-col><v-text-field v-model="balance" label="Balance" disabled></v-text-field></v-col>
+          <v-col><v-text-field v-model="network" label="Network" disabled></v-text-field></v-col>
+        </v-row>
+        <v-btn color="primary" @click="getWalletData">GET DATA</v-btn>
+      </v-card-text>
+    </v-card>
+
+    <v-row>
+      <v-col cols="8">
+        <v-data-table :headers="headers" :items="creatures" item-value="name"></v-data-table>
+        <v-btn @click="attack">Attack</v-btn>
+        <v-btn @click="feed">Feed</v-btn>
+        <v-btn @click="destroy">Destroy</v-btn>
+      </v-col>
+      <v-col cols="4">
+        <v-btn @click="addItem">Add</v-btn>
+        <v-btn @click="editItem">Edit</v-btn>
+        <v-text-field v-model="selectedItem.name" label="Name"></v-text-field>
+        <v-text-field v-model="selectedItem.dna" label="DNA"></v-text-field>
+        <v-text-field v-model="selectedItem.level" label="Level"></v-text-field>
+        <v-text-field v-model="selectedItem.winCount" label="Win Count"></v-text-field>
+        <v-text-field v-model="selectedItem.loseCount" label="Lose Count"></v-text-field>
+        <v-text-field v-model="selectedItem.readyTime" label="Ready Time" disabled></v-text-field>
+        <v-btn @click="saveItem">Save</v-btn>
+        <v-btn @click="cancel">Cancel</v-btn>
+      </v-col>
+    </v-row>
+  </v-container>
+</template>
+
+<script>
+export default {
+  d

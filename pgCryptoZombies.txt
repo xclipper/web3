@@ -1,0 +1,63 @@
+<template>
+  <v-container>
+    <v-row>
+      <v-col cols="8">
+        <v-data-table :headers="headers" :items="creatures" item-value="name"></v-data-table>
+        <v-btn @click="attack">Attack</v-btn>
+        <v-btn @click="feed">Feed</v-btn>
+        <v-btn @click="destroy">Destroy</v-btn>
+      </v-col>
+      <v-col cols="4">
+        <v-btn @click="addItem">Add</v-btn>
+        <v-btn @click="editItem">Edit</v-btn>
+        <v-text-field v-model="selectedItem.name" label="Name"></v-text-field>
+        <v-text-field v-model="selectedItem.dna" label="DNA"></v-text-field>
+        <v-text-field v-model="selectedItem.level" label="Level"></v-text-field>
+        <v-text-field v-model="selectedItem.winCount" label="Win Count"></v-text-field>
+        <v-text-field v-model="selectedItem.loseCount" label="Lose Count"></v-text-field>
+        <v-text-field v-model="selectedItem.readyTime" label="Ready Time" disabled></v-text-field>
+        <v-btn @click="saveItem">Save</v-btn>
+        <v-btn @click="cancel">Cancel</v-btn>
+      </v-col>
+    </v-row>
+  </v-container>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      headers: [
+        { text: "Name", value: "name" },
+        { text: "DNA", value: "dna" },
+        { text: "Img", value: "img" }
+      ],
+      creatures: [],
+      selectedItem: { name: "", dna: "", level: "", winCount: "", loseCount: "", readyTime: "" },
+    };
+  },
+  methods: {
+    addItem() {
+      this.selectedItem = { name: "", dna: "", level: "", winCount: "", loseCount: "", readyTime: "" };
+    },
+    editItem() {
+      // Edit logic
+    },
+    saveItem() {
+      this.creatures.push({ ...this.selectedItem });
+    },
+    cancel() {
+      this.selectedItem = { name: "", dna: "", level: "", winCount: "", loseCount: "", readyTime: "" };
+    },
+    attack() {
+      console.log("Attack action");
+    },
+    feed() {
+      console.log("Feed action");
+    },
+    destroy() {
+      console.log("Destroy action");
+    }
+  }
+};
+</script>

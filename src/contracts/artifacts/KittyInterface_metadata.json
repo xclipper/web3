@@ -1,0 +1,125 @@
+{
+	"compiler": {
+		"version": "0.5.17+commit.d19bba13"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_id",
+						"type": "uint256"
+					}
+				],
+				"name": "getKitty",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "isGestating",
+						"type": "bool"
+					},
+					{
+						"internalType": "bool",
+						"name": "isReady",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "cooldownIndex",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "nextActionAt",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "siringWithId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "birthTime",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "matronId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "sireId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "generation",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "genes",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"methods": {}
+		},
+		"userdoc": {
+			"methods": {}
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"zombiefeeding.sol": "KittyInterface"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"ownable.sol": {
+			"keccak256": "0xfa9bcf71ae13716aaa4d7a8335815c5536d911c0c40b14301e55fc9e2db0169b",
+			"urls": [
+				"bzz-raw://0a7a638624f248855e332d1bf52a1bde4b0b040aa20d149bb09bc42f45dfdc6d",
+				"dweb:/ipfs/QmfM5LxvqaunTABUXLyWNzkRa8W1VJsjRdQuyKMH1WZdLK"
+			]
+		},
+		"safemath.sol": {
+			"keccak256": "0x748f1d4bdf650aabc99d880117f5242d867d86e0456fec684371156cafed4adc",
+			"urls": [
+				"bzz-raw://8942ed373dcaea8c8708efc02c3a9a00089979b1500b14fe6075b19146f8c8ce",
+				"dweb:/ipfs/QmWeM3PmXoY5ZUAxij5oSzNNozTFZJG3XZYW8DcizvShNc"
+			]
+		},
+		"zombiefactory.sol": {
+			"keccak256": "0xebab6d7bd57a3bbf422462d772a8af18c37adaeac63212126efb1380a1f7ddea",
+			"urls": [
+				"bzz-raw://96e51d1b412500274f465f5e24d4d2957e793629b8b1eab1ee7e9ee2bb063690",
+				"dweb:/ipfs/QmZHiJA1ZSpc2aJVN8cQ6VrcYpjHsCn26n2JfMA1vcrKTX"
+			]
+		},
+		"zombiefeeding.sol": {
+			"keccak256": "0x39f9c94c427520e26e86c2b7982622684dae970374babd2ce90d2cfb4d66cee6",
+			"urls": [
+				"bzz-raw://1eb6d0f802b46190255fb51d54a33e0082fc6b3f84f5e4ec6daf8f3d5c9976a1",
+				"dweb:/ipfs/QmTdj4kncdHLXn83Freugx51H4vwTLrWpdXueUw4g98Pvz"
+			]
+		}
+	},
+	"version": 1
+}
