@@ -57,21 +57,30 @@
       </v-row>
     </div>
     <v-row class="font-weight-bold">
+      <v-col cols="2">Seç</v-col>
       <v-col cols="2">Name</v-col>
       <v-col cols="2">DNA</v-col>
       <v-col cols="2">Level</v-col>
-      <v-col cols="2">WinCount</v-col>
-      <v-col cols="2">LossCount</v-col>
+      <!-- <v-col cols="2">WinCount</v-col>
+      <v-col cols="2">LossCount</v-col> -->
       <v-col cols="2">ReadyTime</v-col>
       <v-divider tickness="6"></v-divider>
     </v-row>
-
     <v-row v-for="(item, index) in this.items" :key="index">
+      <v-col cols="2">
+        <input
+          type="radio"
+          :name="'itemGroup'"
+          :value="item.id"
+          v-model="selectedItem"
+          @change="onItemSelected(item)"
+        />
+      </v-col>
       <v-col cols="2">{{ item.name }}</v-col>
       <v-col cols="2">{{ item.dna }}</v-col>
       <v-col cols="2">{{ item.level }}</v-col>
-      <v-col cols="2">{{ item.winCount }}</v-col>
-      <v-col cols="2">{{ item.lossCount }}</v-col>
+      <!--<v-col cols="2">{{ item.winCount }}</v-col>
+        <v-col cols="2">{{ item.lossCount }}</v-col>  -->
       <v-col cols="2">{{ item.readyTime }}</v-col>
     </v-row>
 
@@ -137,9 +146,10 @@ export default {
       name: '',
       dna: '',
       level: '',
-      winCount: '',
-      lossCount: '',
+      //winCount: '',
+      //lossCount: '',
       readyTime: '',
+      selectedItem: null, // seçilen radio butonun değeri
       // Örnek veri
       items: [
         // Boş bir tablo için bu array boş bırakılabilir
@@ -148,8 +158,8 @@ export default {
           name: '',
           dna: '',
           level: 0,
-          winCount: 0,
-          lossCount: 0,
+          //winCount: 0,
+          //lossCount: 0,
           readyTime: 0,
         },
       ],
@@ -312,43 +322,43 @@ export default {
     },
     async add() {
       // Ekleme işlemleri
-      if (this.AppState.WalletAdres) {}
-        this.AppState.zombieName = '';
-        this.IsCreateZombie = true;
+      if (this.AppState.WalletAdres) {
+      }
+      this.AppState.zombieName = '';
+      this.IsCreateZombie = true;
+    },
+  },
+  async attack() {
+    if (this.AppState.WalletAdres)
+      // Saldırı işlemleri part : 1
+      this.IsAttackZombie = true;
+  },
+  async doAttack(attackedOne, toBeAttckedOne) {
+    //Saldırı işlemleri part : 2
+    try {
+      this.items = await this.web3Contract.methods
+        .attack(attackedOne, toBeAttckedOne)
+        .send({ from: this.AppState.WalletAdres })
+        .on('receipt', function (receipt) {
+          //this.getZombiesByOwner();
+        });
+      this.IsAttackZombie = false;
+      this.getZombiesByOwner(true);
+    } catch (error) {
+      this.IsAttackZombie = false;
+      if (error.code !== 4001) {
+        this.strMessage = 'Error occured : ' + utils.stringify(error.message);
+        this.dialogVisible = true;
+      }
     }
-    },
-    async attack() {
-      if (this.AppState.WalletAdres)
-        // Saldırı işlemleri part : 1
-          this.IsAttackZombie = true;
-    },
-    async doAttack(attackedOne, toBeAttckedOne) {
-      //Saldırı işlemleri part : 2
-      try {
-          this.items = await this.web3Contract.methods
-            .attack(attackedOne,toBeAttckedOne)
-            .send({ from: this.AppState.WalletAdres })
-            .on('receipt', function (receipt) {
-              //this.getZombiesByOwner();
-            });
-          this.IsAttackZombie = false;
-          this.getZombiesByOwner(true);
-        } catch (error) {
-          this.IsAttackZombie = false;
-          if (error.code !== 4001) {
-            this.strMessage = 'Error occured : ' + utils.stringify(error.message);
-            this.dialogVisible = true;
-          }
-        }
-    },
-    feed() {
-      // Besleme işlemleri
-    },
-    destroy() {
-      // Yıkım işlemleri
-    },
-  }
-
+  },
+  feed() {
+    // Besleme işlemleri
+  },
+  destroy() {
+    // Yıkım işlemleri
+  },
+};
 </script>
 
 <style scoped>
