@@ -33,3 +33,13 @@ npm run build
 ```sh
 npm run lint
 ```
+
+### .env.example file cotains required keys by the projext to run
+
+### 1. Enter the empty valued keys
+
+### 2. Don't change VITE_ZOMBIE_CONTRACT_ADDRESS keys. It is the my zombie
+
+### contract address.
+
+### 3. Rename .env.example file to .env
