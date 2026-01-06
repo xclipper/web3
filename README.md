@@ -1,6 +1,9 @@
 # web3
 
+# Aim of this project
+
 This template should help get you started developing with Vue 3 in Vite.
+The aim of this project is to transfer crypto to desired wallet and expand cryptozombies capabilities.
 
 ## Recommended IDE Setup
 
@@ -34,12 +37,11 @@ npm run build
 npm run lint
 ```
 
+# Prepare the required keys to run the app
+
 ### .env.example file cotains required keys by the projext to run
 
-### 1. Enter the empty valued keys
-
-### 2. Don't change VITE_ZOMBIE_CONTRACT_ADDRESS keys. It is the my zombie
-
-### contract address.
-
-### 3. Rename .env.example file to .env
+1. Enter the empty valued keys
+2. Don't change VITE_ZOMBIE_CONTRACT_ADDRESS keys. It is the my zombie
+   contract address.
+3. Rename .env.example file to .env
