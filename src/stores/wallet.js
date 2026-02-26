@@ -1,6 +1,6 @@
 // Utilities
 import { defineStore } from 'pinia';
-import * as utils from '@/utils';
+import * as utils from '../utils';
 import { ref, reactive } from 'vue';
 
 export const useWalletStore = defineStore('wallet', {

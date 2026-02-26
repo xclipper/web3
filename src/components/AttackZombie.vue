@@ -1,4 +1,3 @@
-vue Copy
 <template>
   <v-container fluid class="text-center pa-0 ma-0">
     <v-card>
@@ -7,24 +6,18 @@ vue Copy
         <v-icon>mdi-close</v-icon>
       </v-btn>
 
-      <v-card-title class="headline">Create New Zombie</v-card-title>
+      <v-card-title class="headline">Attack a Zombie</v-card-title>
 
       <v-card-text>
-        <!-- 1. Select alanı -->
-        <v-select
-          v-model="myZombie"
-          :items="myZombieArmy"
-          label="Select zombie type"
-          outlined
-          class="mt-4"
-        ></v-select>
-
-        <!-- 2. Select alanı -->
+        <!-- Select alanı -->
         <v-select
           v-model="enemyZombie"
           :items="enemyZombieArmy"
-          label="Select zombie attribute"
+          item-title="name"
+          item-value="id"
+          label="Select target zombie"
           outlined
+          :loading="loading"
           class="mt-4"
         ></v-select>
       </v-card-text>
@@ -32,7 +25,7 @@ vue Copy
       <v-card-actions>
         <v-spacer></v-spacer>
         <!-- Kaydet butonu -->
-        <v-btn color="primary" @click="createZombie()"> Kaydet </v-btn>
+        <v-btn color="primary" @click="attackZombie()"> Start Attack </v-btn>
       </v-card-actions>
     </v-card>
   </v-container>
@@ -45,12 +38,8 @@ import { useWalletStore } from '@/stores/wallet';
 
 export default {
   props: {
-    myZombieArmy: {
-      type: [],
-      default: () => [],
-    },
     enemyZombieArmy: {
-      type: [],
+      type: Array,
       default: () => [],
     },
   },
@@ -58,22 +47,20 @@ export default {
     return {
       AppState: useWalletStore(),
       enemyZombie: '',
-      myZombie: '',
     };
   },
   methods: {
     attackZombie() {
-      if (this.myZombie !== '' && this.enemyZombie) {
+      if (this.enemyZombie !== '') {
+        this.$emit('attackzombie', {
+          toBeAttackedID: this.enemyZombie,
+        });
+        this.closePopup();
       }
-      this.$emit('attack', {
-        atackedOne: this.myZombie,
-        toBeAttckedOne: this.enemyZombie,
-      });
-      this.closePopup();
     },
-  },
-  closePopup() {
-    this.$emit('closePopup');
+    closePopup() {
+      this.$emit('closePopup');
+    },
   },
 };
 </script>

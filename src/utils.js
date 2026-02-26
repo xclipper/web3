@@ -43,3 +43,7 @@ export function stringify(obj) {
 export function getNetworkName(chainId) {
   return knownNetworks[chainId] || `Unknow Network -> (Chain ID: ${chainId})`;
 }
+
+export function formatDate(ts) {
+  return new Date(parseInt(ts.toString()) * 1000).toLocaleString();
+}

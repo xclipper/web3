@@ -54,8 +54,9 @@ export default {
     createZombie() {
       if (this.inputValue !== '') {
         this.AppState.zombieName = this.inputValue;
-        this.closePopup();
+        this.$emit('createzombie'); // event raise et
       }
+      this.closePopup();
     },
     closePopup() {
       this.$emit('closePopup');
