@@ -397,7 +397,7 @@ export default {
             .createRandomZombie(this.AppState.zombieName)
             .send({ from: this.AppState.WalletAdres })
             .on('receipt', function (receipt) {
-              this.getZombiesByOwner(true);
+              //this.getZombiesByOwner(true);
             });
           this.AppState.zombieName = '';
           this.IsCreateZombie = false;
